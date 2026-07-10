@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class="container">
       <div class="footer-grid">
         <div>
-          <h5 data-brand-name>MARKA ADI</h5>
+          <h5 data-brand-name>Eliva Creative Agency</h5>
           <p style="color:rgba(255,255,255,.7); font-size:.86rem; max-width:280px;">
             Kids, Medical ve Premium kategorilerinde güvenilir markaları bir araya getiren vitrin sitesi.
           </p>
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <h5>Kurumsal</h5>
           <a href="index.html">Ana Sayfa</a>
           <a href="#" data-wa-generic target="_blank" rel="noopener">WhatsApp</a>
-          <a href="#" data-mail data-mail-text>info@marka-adi.com</a>
+          <a href="#" data-mail data-mail-text>info@elivacreative.com</a>
         </div>
         <div>
           <h5>İletişim</h5>
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© <span id="footer-year"></span> <span data-brand-name>MARKA ADI</span>. Tüm hakları saklıdır.</span>
+        <span>© <span id="footer-year"></span> <span data-brand-name>Eliva Creative Agency</span>. Tüm hakları saklıdır.</span>
         <span>Bu bir vitrin sitesidir, online ödeme alınmamaktadır.</span>
       </div>
     </div>

@@ -108,7 +108,7 @@ ul { padding-left: 1.1em; color: var(--ink-soft); }
    HERO
 ============================================================ */
 .hero {
-  background: linear-gradient(160deg, var(--brand) 0%, var(--brand-light) 100%);
+  background: linear-gradient(160deg, rgba(20,48,74,0.75) 0%, rgba(31,74,112,0.75) 100%), url('img/bg/hero-home.jpg') center/cover no-repeat;
   color: #fff;
   padding: 84px 0 72px;
 }
@@ -213,9 +213,9 @@ ul { padding-left: 1.1em; color: var(--ink-soft); }
   padding: 56px 0 40px;
   color: #fff;
 }
-.page-hero.kids { background: linear-gradient(140deg, var(--kids-dark), var(--kids)); }
-.page-hero.medical { background: linear-gradient(140deg, var(--medical-dark), var(--medical)); }
-.page-hero.premium { background: linear-gradient(140deg, var(--premium-dark), var(--premium)); }
+.page-hero.kids { background: linear-gradient(140deg, rgba(28,121,150,0.75), rgba(46,163,199,0.75)), url('img/bg/hero-kids.jpg') center/cover no-repeat; }
+.page-hero.medical { background: linear-gradient(140deg, rgba(10,91,75,0.75), rgba(14,124,102,0.75)), url('img/bg/hero-medical.jpg') center/cover no-repeat; }
+.page-hero.premium { background: linear-gradient(140deg, rgba(92,79,34,0.75), rgba(122,106,47,0.75)), url('img/bg/hero-premium.jpg') center/cover no-repeat; }
 .page-hero .eyebrow { background: rgba(255,255,255,.16); color: #fff; }
 .page-hero h1 { font-size: 2.1rem; max-width: 700px; }
 .page-hero p { color: rgba(255,255,255,.88); max-width: 620px; margin-bottom: 0; }
@@ -319,7 +319,7 @@ ul { padding-left: 1.1em; color: var(--ink-soft); }
 .contact-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
 .info-card {
-  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  background: #fff url('img/bg/texture-medical.jpg') center/cover no-repeat; border: 1px solid var(--border); border-radius: var(--radius);
   padding: 24px; box-shadow: var(--shadow);
 }
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
