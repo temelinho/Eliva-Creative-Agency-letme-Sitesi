@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Ürün Detayı | Premium</title>
+<link rel="icon" href="assets/img/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="index.html" class="logo"><img src="assets/img/logo.svg" alt="Eliva Creative Agency" height="34"></a>
+    <nav class="main-nav">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="kids.html">Kids</a>
+      <a href="medical.html">Medical</a>
+      <a href="premium.html" class="active">Premium</a>
+    </nav>
+    <a class="nav-cta" href="#" data-wa-generic target="_blank" rel="noopener">WhatsApp'tan Yaz</a>
+  </div>
+</header>
+
+<section class="section" style="padding-top:36px;">
+  <div class="container">
+    <a href="premium.html" class="back-link" style="color:var(--premium-dark);">← Premium ürünlere dön</a>
+    <div id="detail-root"></div>
+  </div>
+</section>
+
+<footer class="site-footer" id="footer-placeholder"></footer>
+<a class="wa-float" href="#" data-wa-generic target="_blank" rel="noopener" title="WhatsApp'tan yazın">💬</a>
+
+<script src="assets/config.js"></script>
+<script src="assets/data-premium.js"></script>
+<script src="assets/main.js"></script>
+<script src="assets/footer.js"></script>
+<script>
+  const id = qs("id");
+  const p = PREMIUM_PRODUCTS.find(x => x.id === id) || PREMIUM_PRODUCTS[0];
+  document.getElementById("page-title").textContent = p.name + " | Premium";
+
+  const imgBlock = p.image
+    ? `<img src="${p.image}" alt="${p.name}">`
+    : `<div style="width:100%;height:100%;min-height:340px;display:flex;align-items:center;justify-content:center;background:var(--premium-bg);font-size:4rem;">🍯</div>`;
+
+  document.getElementById("detail-root").innerHTML = `
+    <div class="detail-wrap">
+      <div class="detail-img">${imgBlock}</div>
+      <div class="detail-panel">
+        <span class="fam-tag" style="background:var(--premium-bg); color:var(--premium-dark);">
+          ${p.category === "bal" ? "Organik Bal" : "Organik Zeytinyağı"}${p.isPlaceholder ? " · Örnek Ürün" : ""}
+        </span>
+        <h1>${p.name}</h1>
+        <p class="muted">${p.size}</p>
+        <div class="detail-price" style="color:var(--premium-dark);">${formatTRY(p.price)}</div>
+
+        ${p.tags ? `<div class="opt-block"><span class="opt-label">Kullanım Alanı</span>${p.tags.map(t => `<span class="opt-pill">${t}</span>`).join("")}</div>` : ""}
+
+        <p>${p.desc}</p>
+
+        <div class="action-row">
+          <a class="btn btn-whatsapp" id="wa-order" target="_blank" rel="noopener">💬 WhatsApp'tan Sipariş Ver</a>
+          <a class="btn btn-outline" style="color:var(--premium-dark);" data-tel data-tel-text>Telefonla Ara</a>
+        </div>
+
+        ${p.isPlaceholder
+          ? `<div class="note-box">Bu ürün gösterlik amaçlıdır. Gerçek tedarikçi ve ürün bilgisi netleştiğinde güncellenecektir.</div>`
+          : `<div class="note-box">Ürün bilgileri ve fotoğrafları Nermin Hanım Zeytinliği'ne aittir. Sipariş, stok ve kargo detayları için WhatsApp üzerinden iletişime geçebilirsiniz.</div>`
+        }
+      </div>
+    </div>
+  `;
+
+  document.getElementById("wa-order").href = waLink(SITE_CONFIG.waMessage(p.name));
+</script>
+</body>
+</html>

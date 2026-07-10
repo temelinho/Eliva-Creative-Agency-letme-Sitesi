@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Ürün Detayı | Kids</title>
+<link rel="icon" href="assets/img/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="index.html" class="logo"><img src="assets/img/logo.svg" alt="Eliva Creative Agency" height="34"></a>
+    <nav class="main-nav">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="kids.html" class="active">Kids</a>
+      <a href="medical.html">Medical</a>
+      <a href="premium.html">Premium</a>
+    </nav>
+    <a class="nav-cta" href="#" data-wa-generic target="_blank" rel="noopener">WhatsApp'tan Yaz</a>
+  </div>
+</header>
+
+<section class="section" style="padding-top:36px;">
+  <div class="container">
+    <a href="kids.html" class="back-link" style="color:var(--kids-dark);">← Kids koleksiyonuna dön</a>
+    <div id="detail-root"></div>
+  </div>
+</section>
+
+<footer class="site-footer" id="footer-placeholder"></footer>
+<a class="wa-float" href="#" data-wa-generic target="_blank" rel="noopener" title="WhatsApp'tan yazın">💬</a>
+
+<script src="assets/config.js"></script>
+<script src="assets/data-kids.js"></script>
+<script src="assets/main.js"></script>
+<script src="assets/footer.js"></script>
+<script>
+  const id = qs("id");
+  const p = KIDS_PRODUCTS.find(x => x.id === id) || KIDS_PRODUCTS[0];
+  document.getElementById("page-title").textContent = p.name + " | Kids";
+
+  document.getElementById("detail-root").innerHTML = `
+    <div class="detail-wrap">
+      <div class="detail-img"><img src="${p.image}" alt="${p.name}"></div>
+      <div class="detail-panel">
+        <span class="fam-tag" style="background:var(--kids-bg); color:var(--kids-dark);">Hopfrög Kids</span>
+        <h1>${p.name}</h1>
+        <p class="muted">${p.tagline}</p>
+        <div class="detail-price" style="color:var(--kids-dark);">${formatTRY(p.price)}</div>
+
+        <div class="opt-block">
+          <span class="opt-label">Renk Seçenekleri</span>
+          ${p.colors.map(c => `<span class="opt-pill"><span class="swatch" style="background:${c.hex}"></span>${c.name}</span>`).join("")}
+        </div>
+
+        <table class="spec-table">
+          <tr><td>EU Beden</td><td>${p.euSize}</td></tr>
+          <tr><td>US Beden</td><td>${p.usSize}</td></tr>
+        </table>
+
+        <div class="opt-block" style="margin-top:16px;">
+          <span class="opt-label">Öne Çıkan Özellikler</span>
+          <ul>${p.features.map(f => `<li>${f}</li>`).join("")}</ul>
+        </div>
+
+        <p>${p.desc}</p>
+
+        <div class="action-row">
+          <a class="btn btn-whatsapp" id="wa-order" target="_blank" rel="noopener">💬 WhatsApp'tan Sipariş Ver</a>
+          <a class="btn btn-outline" style="color:var(--kids-dark);" data-tel data-tel-text>Telefonla Ara</a>
+        </div>
+
+        <div class="note-box">Renk ve beden stoğu değişkenlik gösterebilir. Sipariş öncesi WhatsApp üzerinden stok teyidi alınması önerilir.</div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("wa-order").href = waLink(SITE_CONFIG.waMessage(p.name));
+</script>
+</body>
+</html>

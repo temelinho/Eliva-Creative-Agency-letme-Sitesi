@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium | Eliva Creative Agency</title>
+<meta name="description" content="Ödüllü soğuk sıkım organik zeytinyağı ve organik bal ürünleri. Hemen WhatsApp'tan sipariş verin.">
+<link rel="icon" href="assets/img/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="index.html" class="logo"><img src="assets/img/logo.svg" alt="Eliva Creative Agency" height="34"></a>
+    <nav class="main-nav">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="kids.html">Kids</a>
+      <a href="medical.html">Medical</a>
+      <a href="premium.html" class="active">Premium</a>
+    </nav>
+    <a class="nav-cta" href="#" data-wa-generic target="_blank" rel="noopener">WhatsApp'tan Yaz</a>
+  </div>
+</header>
+
+<section class="page-hero premium">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Ana Sayfa</a> / Premium</div>
+    <span class="eyebrow">Ödüllü &amp; Organik</span>
+    <h1>Premium Hızlı Tüketim: Organik Zeytinyağı &amp; Bal</h1>
+    <p>Kaz Dağları eteklerinden, altın madalyalı soğuk sıkım zeytinyağları ve doğal bal seçenekleri. Sofralarınıza taşımak için hemen sipariş verin.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="tab-row" id="tabs">
+      <button class="tab-btn active" data-cat="all" style="background:var(--premium); color:#fff; border-color:var(--premium);">Tümü</button>
+      <button class="tab-btn" data-cat="zeytinyagi">Organik Zeytinyağı</button>
+      <button class="tab-btn" data-cat="bal">Organik Bal</button>
+    </div>
+    <div class="product-grid" id="premium-grid"></div>
+  </div>
+</section>
+
+<footer class="site-footer" id="footer-placeholder"></footer>
+<a class="wa-float" href="#" data-wa-generic target="_blank" rel="noopener" title="WhatsApp'tan yazın">💬</a>
+
+<script src="assets/config.js"></script>
+<script src="assets/data-premium.js"></script>
+<script src="assets/main.js"></script>
+<script src="assets/footer.js"></script>
+<script>
+  const grid = document.getElementById("premium-grid");
+
+  function cardHtml(p) {
+    const imgBlock = p.image
+      ? `<img src="${p.image}" alt="${p.name}" loading="lazy">`
+      : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--premium-bg);font-size:2.4rem;">🍯</div>`;
+    return `
+    <a class="product-card" href="product-premium.html?id=${p.id}">
+      <div class="thumb">${imgBlock}</div>
+      <div class="body">
+        <span class="fam" style="color:var(--premium-dark);">${p.category === "bal" ? "Organik Bal" : "Organik Zeytinyağı"}${p.isPlaceholder ? " · Örnek" : ""}</span>
+        <h4>${p.name}</h4>
+        <p class="desc">${p.size}</p>
+        <div class="price">${formatTRY(p.price)}</div>
+      </div>
+    </a>`;
+  }
+
+  function render(cat) {
+    const list = cat === "all" ? PREMIUM_PRODUCTS : PREMIUM_PRODUCTS.filter(p => p.category === cat);
+    grid.innerHTML = list.map(cardHtml).join("");
+  }
+  render("all");
+
+  document.getElementById("tabs").addEventListener("click", (e) => {
+    const btn = e.target.closest(".tab-btn");
+    if (!btn) return;
+    document.querySelectorAll(".tab-btn").forEach(b => {
+      b.classList.remove("active");
+      b.style.background = "";
+      b.style.color = "";
+      b.style.borderColor = "";
+    });
+    btn.classList.add("active");
+    btn.style.background = "var(--premium)";
+    btn.style.color = "#fff";
+    btn.style.borderColor = "var(--premium)";
+    render(btn.dataset.cat);
+  });
+</script>
+</body>
+</html>
