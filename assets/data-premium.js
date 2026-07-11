@@ -1,4 +1,4 @@
-// Premium Hızlı Tüketim - Zeytinyağı ürünleri (kaynak: nerminhanim.com, musterimizin markasi)
+// Premium Organik - Zeytinyağı ürünleri (kaynak: nerminhanim.com, musterimizin markasi)
 // Bal urunleri henuz netlesmedi -> gostermelik (placeholder) olarak isaretlendi (isPlaceholder:true)
 
 const PREMIUM_PRODUCTS = [

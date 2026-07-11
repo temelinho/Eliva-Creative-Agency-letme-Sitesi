@@ -31,4 +31,23 @@ function bindContactLinks() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", bindContactLinks);
+document.addEventListener("DOMContentLoaded", function() {
+  bindContactLinks();
+
+  // Hamburger menu toggle
+  const hamburger = document.getElementById("hamburger");
+  const mainNav = document.getElementById("main-nav");
+  if (hamburger && mainNav) {
+    hamburger.addEventListener("click", function() {
+      hamburger.classList.toggle("active");
+      mainNav.classList.toggle("open");
+    });
+    // Close menu when a nav link is clicked
+    mainNav.querySelectorAll("a").forEach(function(link) {
+      link.addEventListener("click", function() {
+        hamburger.classList.remove("active");
+        mainNav.classList.remove("open");
+      });
+    });
+  }
+});
