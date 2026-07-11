@@ -34,19 +34,19 @@ function bindContactLinks() {
 document.addEventListener("DOMContentLoaded", function() {
   bindContactLinks();
 
-  // Hamburger menu toggle
+  // Hamburger menu toggle — controls the nav-drawer
   const hamburger = document.getElementById("hamburger");
-  const mainNav = document.getElementById("main-nav");
-  if (hamburger && mainNav) {
+  const navDrawer = document.getElementById("nav-drawer");
+  if (hamburger && navDrawer) {
     hamburger.addEventListener("click", function() {
       hamburger.classList.toggle("active");
-      mainNav.classList.toggle("open");
+      navDrawer.classList.toggle("open");
     });
-    // Close menu when a nav link is clicked
-    mainNav.querySelectorAll("a").forEach(function(link) {
+    // Close drawer when a link is clicked
+    navDrawer.querySelectorAll("a").forEach(function(link) {
       link.addEventListener("click", function() {
         hamburger.classList.remove("active");
-        mainNav.classList.remove("open");
+        navDrawer.classList.remove("open");
       });
     });
   }

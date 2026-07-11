@@ -13,15 +13,24 @@
 <header class="site-header">
   <div class="nav-wrap">
     <a href="index.html" class="logo"><img src="assets/img/logo.svg" alt="Eliva Creative Agency" height="34"></a>
-    <button class="hamburger" aria-label="Menü" id="hamburger"><span></span><span></span><span></span></button>
     <nav class="main-nav" id="main-nav">
       <a href="index.html">Ana Sayfa</a>
       <a href="kids.html">Kids</a>
       <a href="medical.html" class="active">Medical</a>
       <a href="premium.html">Premium Organik</a>
     </nav>
-    <a class="nav-cta" href="#" data-wa-generic target="_blank" rel="noopener">WhatsApp'tan Yaz</a>
+    <div class="nav-right">
+      <a class="nav-cta" href="#" data-wa-generic target="_blank" rel="noopener">WhatsApp'tan Yaz</a>
+      <button class="hamburger" aria-label="Menü" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
   </div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <a href="index.html">Ana Sayfa</a>
+    <a href="kids.html">Kids</a>
+    <a href="medical.html" class="active">Medical</a>
+    <a href="premium.html">Premium Organik</a>
+    <a href="#" class="drawer-cta" data-wa-generic target="_blank" rel="noopener">💬 WhatsApp'tan Yaz</a>
+  </nav>
 </header>
 
 <section class="page-hero medical">
@@ -127,41 +136,42 @@
   const MESO_PRODUCTS = [
     {
       name: "G Meso Anti-Aging 125 HA",
-      img: "https://www.globalbiyomedikal.com/wp-content/uploads/2024/06/anti-aging.webp",
+      img: "assets/img/bg/gmeso-anti-aging.png",
       area: "Yüz, Göz çevresi, Boyun, Dekolte, El",
       effect: "Anında lifting etkisi, yüksek hyaluronik asit ile derin kırışıklık ve mimik çizgilerine karşı yoğun nemlendirme."
     },
     {
       name: "G Meso Skin Renewer",
-      img: "https://www.globalbiyomedikal.com/wp-content/uploads/2024/06/skin-renewer.webp",
+      img: "assets/img/bg/gmeso-skin-renewer.png",
       area: "Yüz, Göz çevresi, Boyun, Dekolte, El",
       effect: "Cilt tonunu eşitler, aydınlatır, ince kırışıklıkları azaltır; genç ve orta yaş cilt bakımı için idealdir."
     },
     {
       name: "G Meso Anti Skin Spot",
-      img: "https://www.globalbiyomedikal.com/wp-content/uploads/2024/06/anti-skin-spot.webp",
+      img: "assets/img/bg/gmeso-anti-skin-spot.png",
       area: "Yüz, Göz çevresi, Boyun, Dekolte, El",
       effect: "Tranexamic asit ve arbutin içeriğiyle leke oluşumunu önler, cilt tonunu dengeler."
     },
     {
       name: "G Meso Eye Contour Deluxe",
-      img: "https://www.globalbiyomedikal.com/wp-content/uploads/2024/06/eye-contour.webp",
+      img: "assets/img/bg/gmeso-eye-contour.png",
       area: "Göz çevresi",
       effect: "Göz çevresi kırışıklıklarını azaltır, torbalanma ve koyu halkaları iyileştirir, elastikiyeti artırır."
     },
     {
       name: "G Meso Hair Guard",
-      img: "https://www.globalbiyomedikal.com/wp-content/uploads/2024/06/hair-guard.webp",
+      img: "assets/img/bg/gmeso-hair-guard.png",
       area: "Saç, Saç derisi",
       effect: "Saç derisini nemlendirir, folikülleri besler, dökülmeyi azaltır ve yeni saç oluşumunu destekler."
     },
     {
       name: "G Meso Youth Bomb",
-      img: "https://www.globalbiyomedikal.com/wp-content/uploads/2024/06/youth-bomb.webp",
+      img: "assets/img/bg/gmeso-youth-bomb.png",
       area: "Yüz, Göz çevresi, Boyun, Dekolte, El",
       effect: "Genç ciltler için antioksidan destekli formül; UV etkilerine ve erken yaşlanmaya karşı koruma sağlar."
     }
   ];
+
 
   document.getElementById("meso-grid").innerHTML = MESO_PRODUCTS.map(m => `
     <div class="product-card">
