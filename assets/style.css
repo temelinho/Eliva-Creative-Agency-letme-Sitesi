@@ -307,7 +307,7 @@ ul { padding-left: 1.1em; color: var(--ink-soft); }
 }
 .page-hero.kids { background: linear-gradient(140deg, rgba(28,121,150,0.75), rgba(46,163,199,0.75)), url('img/bg/hero-kids.jpg') center/cover no-repeat; }
 .page-hero.medical { background: linear-gradient(140deg, rgba(10,91,75,0.75), rgba(14,124,102,0.75)), url('img/bg/hero-medical.jpg') center/cover no-repeat; }
-.page-hero.premium { background: linear-gradient(140deg, rgba(92,79,34,0.75), rgba(122,106,47,0.75)), url('img/bg/hero-premium.jpg') center/cover no-repeat; }
+.page-hero.premium { background: linear-gradient(140deg, rgba(18, 16, 12, 0.7), rgba(0, 0, 0, 0.25)), url('img/bg/hero-premium.jpg') center/cover no-repeat; }
 .page-hero.spor { background: linear-gradient(140deg, rgba(20, 16, 15, 0.75), rgba(226, 87, 31, 0.45)), url('img/bg/hero-spor.png') center/cover no-repeat; }
 .page-hero .eyebrow { background: rgba(255,255,255,.16); color: #fff; }
 .page-hero h1 { font-size: 2.1rem; max-width: 700px; }
