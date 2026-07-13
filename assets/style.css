@@ -564,7 +564,23 @@ ul { padding-left: 1.1em; color: var(--ink-soft); }
 
   .section { padding: 44px 0; }
 
-  .tab-row { justify-content: center; }
+  .tab-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 4px 24px 12px;
+    margin-left: -24px;
+    margin-right: -24px;
+    margin-bottom: 22px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tab-row::-webkit-scrollbar {
+    display: none;
+  }
+  .tab-btn {
+    flex-shrink: 0;
+  }
 
   .product-grid { grid-template-columns: 1fr 1fr; }
 }
