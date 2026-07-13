@@ -194,13 +194,20 @@ ul { padding-left: 1.1em; color: var(--ink-soft); }
 .hero h1 { font-size: 2.5rem; max-width: 760px; }
 .hero p.lead { color: rgba(255,255,255,.85); font-size: 1.12rem; max-width: 620px; }
 .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
-.hero-badges span {
+.hero-badges span, .hero-badges a {
   background: rgba(255,255,255,.12);
   border: 1px solid rgba(255,255,255,.25);
   padding: 6px 14px;
   border-radius: 999px;
   font-size: .82rem;
   font-weight: 600;
+  display: inline-block;
+  transition: background .15s, border-color .15s, transform .15s;
+}
+.hero-badges a:hover {
+  background: rgba(255,255,255,.24);
+  border-color: rgba(255,255,255,.45);
+  transform: translateY(-1px);
 }
 
 /* ============================================================
