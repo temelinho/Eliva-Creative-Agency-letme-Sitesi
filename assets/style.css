@@ -228,7 +228,7 @@ ul { padding-left: 1.1em; color: var(--ink-soft); }
   border: 1px solid var(--border);
 }
 .cat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
-.cat-card .cat-top { padding: 26px 26px 0; }
+.cat-card .cat-top { padding: 26px 26px 0; min-height: 145px; }
 .cat-card .cat-tag {
   display: inline-block;
   font-size: .74rem;
@@ -247,6 +247,8 @@ ul { padding-left: 1.1em; color: var(--ink-soft); }
 .cat-card .cat-img { height: 190px; overflow: hidden; margin-top: 18px; background: var(--bg-soft); }
 .cat-card .cat-img img { width: 100%; height: 100%; object-fit: cover; }
 .cat-card .cat-body { padding: 20px 26px 26px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.cat-card .cat-body .btn { margin-top: auto; }
+
 .btn {
   display: inline-flex;
   align-items: center;
