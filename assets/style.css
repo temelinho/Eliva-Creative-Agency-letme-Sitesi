@@ -27,6 +27,10 @@
   --premium: #7a6a2f;
   --premium-dark: #5c4f22;
   --premium-bg: #faf6e8;
+
+  --spor: #e2571f;
+  --spor-dark: #b23e12;
+  --spor-bg: #fdeee6;
 }
 
 * { box-sizing: border-box; }
@@ -204,13 +208,14 @@ ul { padding-left: 1.1em; color: var(--ink-soft); }
 ============================================================ */
 .cat-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
   margin-top: -40px;
   position: relative;
   z-index: 2;
 }
-@media (max-width: 900px) { .cat-grid { grid-template-columns: 1fr; margin-top: 24px; } }
+@media (max-width: 1000px) { .cat-grid { grid-template-columns: repeat(2, 1fr); margin-top: 24px; } }
+@media (max-width: 560px) { .cat-grid { grid-template-columns: 1fr; } }
 
 .cat-card {
   background: #fff;
@@ -237,6 +242,7 @@ ul { padding-left: 1.1em; color: var(--ink-soft); }
 .cat-card.kids .cat-tag { background: var(--kids-bg); color: var(--kids-dark); }
 .cat-card.medical .cat-tag { background: var(--medical-bg); color: var(--medical-dark); }
 .cat-card.premium .cat-tag { background: var(--premium-bg); color: var(--premium-dark); }
+.cat-card.spor .cat-tag { background: var(--spor-bg); color: var(--spor-dark); }
 .cat-card h3 { font-size: 1.4rem; }
 .cat-card .cat-img { height: 190px; overflow: hidden; margin-top: 18px; background: var(--bg-soft); }
 .cat-card .cat-img img { width: 100%; height: 100%; object-fit: cover; }
@@ -259,6 +265,8 @@ ul { padding-left: 1.1em; color: var(--ink-soft); }
 .btn-kids { background: var(--kids); color: #fff; }
 .btn-medical { background: var(--medical); color: #fff; }
 .btn-premium { background: var(--premium); color: #fff; }
+.btn-spor { background: var(--spor); color: #fff; }
+.btn-brand { background: var(--brand); color: #fff; }
 .btn-outline { background: transparent; border: 1.5px solid currentColor; }
 .btn-whatsapp { background: #25D366; color: #fff; }
 .btn-ghost { background: var(--bg-soft); color: var(--ink); }
@@ -291,6 +299,7 @@ ul { padding-left: 1.1em; color: var(--ink-soft); }
 .page-hero.kids { background: linear-gradient(140deg, rgba(28,121,150,0.75), rgba(46,163,199,0.75)), url('img/bg/hero-kids.jpg') center/cover no-repeat; }
 .page-hero.medical { background: linear-gradient(140deg, rgba(10,91,75,0.75), rgba(14,124,102,0.75)), url('img/bg/hero-medical.jpg') center/cover no-repeat; }
 .page-hero.premium { background: linear-gradient(140deg, rgba(92,79,34,0.75), rgba(122,106,47,0.75)), url('img/bg/hero-premium.jpg') center/cover no-repeat; }
+.page-hero.spor { background: linear-gradient(140deg, #b23e12, #e2571f 60%, #f2913f); }
 .page-hero .eyebrow { background: rgba(255,255,255,.16); color: #fff; }
 .page-hero h1 { font-size: 2.1rem; max-width: 700px; }
 .page-hero p { color: rgba(255,255,255,.88); max-width: 620px; margin-bottom: 0; }
@@ -375,7 +384,55 @@ ul { padding-left: 1.1em; color: var(--ink-soft); }
   padding: 9px 18px; border-radius: 999px; border: 1.5px solid var(--border);
   background: #fff; font-weight: 700; font-size: .87rem; cursor: pointer; color: var(--ink-soft);
 }
-.tab-btn.active { color: #fff; border-color: transparent; }
+.tab-btn.active { color: #fff; border-color: transparent; background: var(--accent, var(--brand)); }
+
+/* Emoji placeholder (gorseli olmayan urunler icin) */
+.emoji-thumb {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.6rem; background: var(--bg-soft);
+}
+.spor-thumb { background: var(--spor-bg); }
+
+/* ============================================================
+   HEADER ARAMA KUTUSU
+============================================================ */
+.header-search {
+  display: flex; align-items: center;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  height: 38px;
+}
+.header-search input {
+  border: none; background: transparent; outline: none;
+  padding: 0 12px; font-size: .88rem; width: 150px; color: var(--ink);
+}
+.header-search button {
+  border: none; background: transparent; cursor: pointer;
+  padding: 0 12px 0 4px; font-size: .95rem; height: 100%;
+}
+.header-search:focus-within { border-color: var(--brand); background: #fff; }
+
+.drawer-search { display: flex; gap: 8px; margin-bottom: 10px; }
+.drawer-search input {
+  flex: 1; border: 1px solid var(--border); border-radius: 999px;
+  padding: 11px 16px; font-size: .95rem; outline: none;
+}
+.drawer-search button {
+  border: none; background: var(--brand); color: #fff;
+  border-radius: 999px; padding: 0 18px; font-weight: 700; cursor: pointer;
+}
+
+/* Arama sayfasi formu */
+.search-page-form { display: flex; gap: 10px; margin-top: 18px; max-width: 640px; }
+.search-page-form input {
+  flex: 1; border: 1.5px solid var(--border); border-radius: 999px;
+  padding: 13px 20px; font-size: 1rem; outline: none;
+}
+.search-page-form input:focus { border-color: var(--brand); }
+@media (max-width: 560px) { .search-page-form { flex-direction: column; } }
 
 /* ============================================================
    MEDICAL — İLETİŞİM CTA
@@ -472,6 +529,7 @@ ul { padding-left: 1.1em; color: var(--ink-soft); }
   /* Nav: hide desktop links and WhatsApp CTA from top bar — both are inside the drawer */
   .main-nav { display: none; }
   .nav-right .nav-cta { display: none; }
+  .nav-right .header-search { display: none; }
   .hamburger { display: flex; }
 
   .hero { padding: 52px 0 44px; }

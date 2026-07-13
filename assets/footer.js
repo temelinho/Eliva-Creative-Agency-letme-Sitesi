@@ -7,14 +7,15 @@ document.addEventListener("DOMContentLoaded", function () {
         <div>
           <h5 data-brand-name>Eliva Creative Agency</h5>
           <p style="color:rgba(255,255,255,.7); font-size:.86rem; max-width:280px;">
-            Kids, Medical ve Premium Organik kategorilerinde güvenilir markaları bir araya getiren vitrin sitesi.
+            Kids, Medical, Premium Organik ve Spor &amp; Fitness kategorilerinde güvenilir markaları bir araya getiren vitrin sitesi.
           </p>
         </div>
         <div>
           <h5>Kategoriler</h5>
           <a href="kids.html">Kids — Çocuk Ayakkabısı</a>
-          <a href="medical.html">Medical — Estetik Cihazlar</a>
+          <a href="medical.html">Medical — GCell &amp; GMeso</a>
           <a href="premium.html">Premium Organik — Zeytinyağı &amp; Bal</a>
+          <a href="spor.html">Spor &amp; Fitness — Avessa</a>
         </div>
         <div>
           <h5>Kurumsal</h5>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Ürün Detayı | Medical</title>
+<link rel="icon" href="assets/img/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="index.html" class="logo"><img src="assets/img/logo.svg" alt="Eliva Creative Agency" height="34"></a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="kids.html">Kids</a>
+      <a href="medical.html" class="active">Medical</a>
+      <a href="premium.html">Premium Organik</a>
+      <a href="spor.html">Spor &amp; Fitness</a>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-cta" href="#" data-wa-generic target="_blank" rel="noopener">WhatsApp'tan Yaz</a>
+      <button class="hamburger" aria-label="Menü" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <a href="index.html">Ana Sayfa</a>
+    <a href="kids.html">Kids</a>
+    <a href="medical.html" class="active">Medical</a>
+    <a href="premium.html">Premium Organik</a>
+    <a href="spor.html">Spor &amp; Fitness</a>
+    <a href="#" class="drawer-cta" data-wa-generic target="_blank" rel="noopener">💬 WhatsApp'tan Yaz</a>
+  </nav>
+</header>
+
+<section class="section" style="padding-top:36px;">
+  <div class="container">
+    <a href="medical.html" class="back-link" style="color:var(--medical-dark);">← Medical sayfasına dön</a>
+    <div id="detail-root"></div>
+  </div>
+</section>
+
+<footer class="site-footer" id="footer-placeholder"></footer>
+<a class="wa-float" href="#" data-wa-generic target="_blank" rel="noopener" title="WhatsApp'tan yazın">💬</a>
+
+<script src="assets/config.js"></script>
+<script src="assets/data-medical.js"></script>
+<script src="assets/main.js"></script>
+<script src="assets/footer.js"></script>
+<script>
+  const id = qs("id");
+  const p = MEDICAL_PRODUCTS.find(x => x.id === id) || MEDICAL_PRODUCTS[0];
+  document.getElementById("page-title").textContent = p.name + " | Medical";
+
+  const imgBlock = p.image
+    ? `<img src="${p.image}" alt="${p.name}">`
+    : `<div class="emoji-thumb" style="aspect-ratio:1/1;font-size:5rem;background:var(--medical-bg);">🔬</div>`;
+
+  document.getElementById("detail-root").innerHTML = `
+    <div class="detail-wrap">
+      <div class="detail-img">${imgBlock}</div>
+      <div class="detail-panel">
+        <span class="fam-tag" style="background:var(--medical-bg); color:var(--medical-dark);">${p.fam}</span>
+        <h1>${p.name}</h1>
+        <p class="muted">${p.tagline}</p>
+        <div class="detail-price" style="color:var(--medical-dark);font-size:1.15rem;">Bilgi için bize ulaşın</div>
+
+        <div class="opt-block" style="margin-top:16px;">
+          <span class="opt-label">Öne Çıkan Özellikler</span>
+          <ul>${p.features.map(f => `<li>${f}</li>`).join("")}</ul>
+        </div>
+
+        <table class="spec-table">
+          ${p.meta.map(m => `<tr><td>${m[0]}</td><td>${m[1]}</td></tr>`).join("")}
+        </table>
+
+        <p style="margin-top:16px;">${p.desc}</p>
+
+        <div class="action-row">
+          <a class="btn btn-whatsapp" id="wa-order" target="_blank" rel="noopener">💬 WhatsApp ile Bilgi Al</a>
+          <a class="btn btn-outline" style="color:var(--medical-dark);" data-tel data-tel-text>Telefonla Ara</a>
+        </div>
+
+        <div class="note-box">Bu bir tanıtım sayfasıdır; ürün klinik kullanıma yöneliktir. Demo, eğitim ve fiyat bilgisi için bizimle iletişime geçin.</div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("wa-order").href = waLink(SITE_CONFIG.waMessageMedical(p.name));
+</script>
+</body>
+</html>

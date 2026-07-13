@@ -31,8 +31,52 @@ function bindContactLinks() {
   });
 }
 
+// Header'a arama kutusu enjekte eder (tum sayfalarda ortak)
+function initHeaderSearch() {
+  const onSearchPage = /(^|\/)search\.html/.test(window.location.pathname + window.location.search) ||
+    window.location.pathname.endsWith("search.html");
+
+  function go(value) {
+    const q = (value || "").trim();
+    window.location.href = "search.html" + (q ? "?q=" + encodeURIComponent(q) : "");
+  }
+
+  // Masaustu: nav-right icine kompakt arama
+  const navRight = document.querySelector(".nav-right");
+  if (navRight && !navRight.querySelector(".header-search")) {
+    const form = document.createElement("form");
+    form.className = "header-search";
+    form.setAttribute("role", "search");
+    form.innerHTML =
+      '<input type="search" placeholder="Ara…" aria-label="Ürün ara">' +
+      '<button type="submit" aria-label="Ara">🔍</button>';
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      go(form.querySelector("input").value);
+    });
+    navRight.insertBefore(form, navRight.firstChild);
+  }
+
+  // Mobil: drawer icine arama
+  const drawer = document.getElementById("nav-drawer");
+  if (drawer && !drawer.querySelector(".drawer-search")) {
+    const form = document.createElement("form");
+    form.className = "drawer-search";
+    form.setAttribute("role", "search");
+    form.innerHTML =
+      '<input type="search" placeholder="Ürün, marka veya kategori ara…" aria-label="Ürün ara">' +
+      '<button type="submit">Ara</button>';
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      go(form.querySelector("input").value);
+    });
+    drawer.insertBefore(form, drawer.firstChild);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function() {
   bindContactLinks();
+  initHeaderSearch();
 
   // Hamburger menu toggle — controls the nav-drawer
   const hamburger = document.getElementById("hamburger");
