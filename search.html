@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arama | Eliva Creative Agency</title>
+<meta name="description" content="Tüm kategorilerde ürün arayın: Kids, Medical, Premium Organik ve Spor & Fitness.">
+<link rel="icon" href="assets/img/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="index.html" class="logo"><img src="assets/img/logo.svg" alt="Eliva Creative Agency" height="34"></a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="kids.html">Kids</a>
+      <a href="medical.html">Medical</a>
+      <a href="premium.html">Premium Organik</a>
+      <a href="spor.html">Spor &amp; Fitness</a>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-cta" href="#" data-wa-generic target="_blank" rel="noopener">WhatsApp'tan Yaz</a>
+      <button class="hamburger" aria-label="Menü" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <a href="index.html">Ana Sayfa</a>
+    <a href="kids.html">Kids</a>
+    <a href="medical.html">Medical</a>
+    <a href="premium.html">Premium Organik</a>
+    <a href="spor.html">Spor &amp; Fitness</a>
+    <a href="#" class="drawer-cta" data-wa-generic target="_blank" rel="noopener">💬 WhatsApp'tan Yaz</a>
+  </nav>
+</header>
+
+<section class="section" style="padding-top:40px;">
+  <div class="container">
+    <h1 style="font-size:1.8rem;">Ürün Arama</h1>
+    <form class="search-page-form" id="search-page-form" role="search">
+      <input type="search" id="search-page-input" placeholder="Ürün, marka veya kategori ara… (örn. tenis, zeytinyağı, saç)" aria-label="Ara">
+      <button type="submit" class="btn btn-brand">Ara</button>
+    </form>
+
+    <div class="tab-row" id="cat-filter" style="--accent:var(--brand); margin-top:22px;">
+      <button class="tab-btn active" data-cat="all">Tüm Kategoriler</button>
+      <button class="tab-btn" data-cat="Kids">Kids</button>
+      <button class="tab-btn" data-cat="Medical">Medical</button>
+      <button class="tab-btn" data-cat="Premium Organik">Premium Organik</button>
+      <button class="tab-btn" data-cat="Spor &amp; Fitness">Spor &amp; Fitness</button>
+    </div>
+
+    <p id="result-count" class="muted" style="margin-top:10px;"></p>
+    <div class="product-grid" id="results" style="margin-top:14px;"></div>
+    <div id="empty-state" style="display:none; padding:40px 0; text-align:center;" class="muted">
+      Aramanıza uygun ürün bulunamadı. Farklı bir kelime deneyin veya kategorilere göz atın.
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" id="footer-placeholder"></footer>
+<a class="wa-float" href="#" data-wa-generic target="_blank" rel="noopener" title="WhatsApp'tan yazın">💬</a>
+
+<script src="assets/config.js"></script>
+<script src="assets/data-kids.js"></script>
+<script src="assets/data-premium.js"></script>
+<script src="assets/data-medical.js"></script>
+<script src="assets/data-spor.js"></script>
+<script src="assets/main.js"></script>
+<script src="assets/footer.js"></script>
+<script>
+  // Tum kategorilerden birlesik arama indeksi
+  const INDEX = [];
+
+  (typeof KIDS_PRODUCTS !== "undefined" ? KIDS_PRODUCTS : []).forEach(p => INDEX.push({
+    cat: "Kids", accent: "var(--kids-dark)",
+    name: p.name, sub: p.tagline,
+    url: "product-kids.html?id=" + p.id,
+    price: p.price, priceInfo: null,
+    img: p.image ? `<img src="${p.image}" alt="${p.name}" loading="lazy">` : "",
+    text: [p.name, p.tagline, p.desc, "Hopfrög Kids çocuk ayakkabı"].join(" ")
+  }));
+
+  (typeof PREMIUM_PRODUCTS !== "undefined" ? PREMIUM_PRODUCTS : []).forEach(p => INDEX.push({
+    cat: "Premium Organik", accent: "var(--premium-dark)",
+    name: p.name, sub: p.size,
+    url: "product-premium.html?id=" + p.id,
+    price: p.price, priceInfo: null,
+    img: p.image ? `<img src="${p.image}" alt="${p.name}" loading="lazy">` : `<div class="emoji-thumb" style="background:var(--premium-bg);">🍯</div>`,
+    text: [p.name, p.size, p.desc, (p.tags||[]).join(" "), p.category].join(" ")
+  }));
+
+  (typeof MEDICAL_PRODUCTS !== "undefined" ? MEDICAL_PRODUCTS : []).forEach(p => INDEX.push({
+    cat: "Medical", accent: "var(--medical-dark)",
+    name: p.name, sub: p.tagline,
+    url: "product-medical.html?id=" + p.id,
+    price: null, priceInfo: "Bilgi için bize ulaşın",
+    img: p.image ? `<img src="${p.image}" alt="${p.name}" loading="lazy">` : `<div class="emoji-thumb" style="background:var(--medical-bg);">🔬</div>`,
+    text: [p.name, p.tagline, p.desc, (p.features||[]).join(" "), p.fam].join(" ")
+  }));
+
+  (typeof SPOR_PRODUCTS !== "undefined" ? SPOR_PRODUCTS : []).forEach(p => INDEX.push({
+    cat: "Spor & Fitness", accent: "var(--spor-dark)",
+    name: p.name, sub: p.brand + " · " + p.spec,
+    url: "product-spor.html?id=" + p.id,
+    price: p.price, priceInfo: null,
+    img: p.image ? `<img src="${p.image}" alt="${p.name}" loading="lazy">` : `<div class="emoji-thumb spor-thumb">${p.icon}</div>`,
+    text: [p.name, p.brand, p.spec, p.desc, p.tag, SPOR_CATEGORIES[p.category]].join(" ")
+  }));
+
+  function norm(s) {
+    return (s || "").toLocaleLowerCase("tr-TR")
+      .replaceAll("ı","i").replaceAll("İ","i").replaceAll("ş","s").replaceAll("ğ","g")
+      .replaceAll("ü","u").replaceAll("ö","o").replaceAll("ç","c");
+  }
+
+  const resultsEl = document.getElementById("results");
+  const countEl = document.getElementById("result-count");
+  const emptyEl = document.getElementById("empty-state");
+  const input = document.getElementById("search-page-input");
+  let activeCat = "all";
+
+  function priceHtml(it) {
+    if (it.priceInfo) return `<div class="price" style="font-size:.92rem;color:${it.accent};">${it.priceInfo} →</div>`;
+    return `<div class="price">${formatTRY(it.price)}</div>`;
+  }
+
+  function card(it) {
+    return `
+    <a class="product-card" href="${it.url}">
+      <div class="thumb">${it.img}</div>
+      <div class="body">
+        <span class="fam" style="color:${it.accent};">${it.cat}</span>
+        <h4>${it.name}</h4>
+        <p class="desc">${it.sub || ""}</p>
+        ${priceHtml(it)}
+      </div>
+    </a>`;
+  }
+
+  function run() {
+    const q = norm(input.value.trim());
+    let list = INDEX;
+    if (activeCat !== "all") list = list.filter(it => it.cat === activeCat);
+    if (q) {
+      const terms = q.split(/\s+/);
+      list = list.filter(it => {
+        const t = norm(it.text);
+        return terms.every(term => t.includes(term));
+      });
+    }
+    resultsEl.innerHTML = list.map(card).join("");
+    emptyEl.style.display = list.length ? "none" : "block";
+    if (q || activeCat !== "all") {
+      countEl.textContent = list.length + " ürün bulundu" + (q ? ` — "${input.value.trim()}"` : "");
+    } else {
+      countEl.textContent = INDEX.length + " ürün listeleniyor. Aramak için yukarıya yazın.";
+    }
+  }
+
+  document.getElementById("search-page-form").addEventListener("submit", (e) => { e.preventDefault(); run(); });
+  input.addEventListener("input", run);
+  document.getElementById("cat-filter").addEventListener("click", (e) => {
+    const btn = e.target.closest(".tab-btn");
+    if (!btn) return;
+    document.querySelectorAll("#cat-filter .tab-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    activeCat = btn.dataset.cat === "Spor &amp; Fitness" ? "Spor & Fitness" : btn.dataset.cat;
+    run();
+  });
+
+  // URL ?q= parametresi ile gelen arama
+  const initial = qs("q");
+  if (initial) input.value = initial;
+  run();
+  input.focus();
+</script>
+</body>
+</html>

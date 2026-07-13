@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Ürün Detayı | Spor &amp; Fitness</title>
+<link rel="icon" href="assets/img/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="index.html" class="logo"><img src="assets/img/logo.svg" alt="Eliva Creative Agency" height="34"></a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="kids.html">Kids</a>
+      <a href="medical.html">Medical</a>
+      <a href="premium.html">Premium Organik</a>
+      <a href="spor.html" class="active">Spor &amp; Fitness</a>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-cta" href="#" data-wa-generic target="_blank" rel="noopener">WhatsApp'tan Yaz</a>
+      <button class="hamburger" aria-label="Menü" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="nav-drawer" id="nav-drawer">
+    <a href="index.html">Ana Sayfa</a>
+    <a href="kids.html">Kids</a>
+    <a href="medical.html">Medical</a>
+    <a href="premium.html">Premium Organik</a>
+    <a href="spor.html" class="active">Spor &amp; Fitness</a>
+    <a href="#" class="drawer-cta" data-wa-generic target="_blank" rel="noopener">💬 WhatsApp'tan Yaz</a>
+  </nav>
+</header>
+
+<section class="section" style="padding-top:36px;">
+  <div class="container">
+    <a href="spor.html" class="back-link" style="color:var(--spor-dark);">← Spor &amp; Fitness koleksiyonuna dön</a>
+    <div id="detail-root"></div>
+  </div>
+</section>
+
+<footer class="site-footer" id="footer-placeholder"></footer>
+<a class="wa-float" href="#" data-wa-generic target="_blank" rel="noopener" title="WhatsApp'tan yazın">💬</a>
+
+<script src="assets/config.js"></script>
+<script src="assets/data-spor.js"></script>
+<script src="assets/main.js"></script>
+<script src="assets/footer.js"></script>
+<script>
+  const id = qs("id");
+  const p = SPOR_PRODUCTS.find(x => x.id === id) || SPOR_PRODUCTS[0];
+  document.getElementById("page-title").textContent = p.name + " | Spor & Fitness";
+
+  document.getElementById("detail-root").innerHTML = `
+    <div class="detail-wrap">
+      <div class="detail-img">${p.image
+        ? `<img src="${p.image}" alt="${p.name}">`
+        : `<div class="emoji-thumb spor-thumb" style="aspect-ratio:1/1;font-size:5rem;">${p.icon}</div>`}</div>
+      <div class="detail-panel">
+        <span class="fam-tag" style="background:var(--spor-bg); color:var(--spor-dark);">${p.brand} · ${SPOR_CATEGORIES[p.category]}</span>
+        <h1>${p.name}</h1>
+        <p class="muted">${p.tag}</p>
+        <div class="detail-price" style="color:var(--spor-dark);">${formatTRY(p.price)}</div>
+
+        <table class="spec-table">
+          <tr><td>Marka</td><td>${p.brand}</td></tr>
+          <tr><td>Kategori</td><td>${SPOR_CATEGORIES[p.category]}</td></tr>
+          <tr><td>Özellik</td><td>${p.spec}</td></tr>
+        </table>
+
+        <p style="margin-top:16px;">${p.desc}</p>
+
+        <div class="action-row">
+          <a class="btn btn-whatsapp" id="wa-order" target="_blank" rel="noopener">💬 WhatsApp'tan Sipariş Ver</a>
+          <a class="btn btn-outline" style="color:var(--spor-dark);" data-tel data-tel-text>Telefonla Ara</a>
+        </div>
+
+        <div class="note-box">Stok durumu değişkenlik gösterebilir. Sipariş öncesi WhatsApp üzerinden stok teyidi alınması önerilir.</div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("wa-order").href = waLink(SITE_CONFIG.waMessage(p.name));
+</script>
+</body>
+</html>
